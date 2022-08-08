@@ -5,6 +5,7 @@ import ContentSection from './components/ContentSection'
 import CrossRevealSection from './components/CrossRevealSection'
 import FaceOne from '../src/assets/images/faceOne.png'
 import LandscapeOne from '../src/assets/images/landscapeOne.png'
+import LandscapeTwo from '../src/assets/images/landscapeTwo.png'
 
 const StyledHeroSection = styled.section`
   position: relative;
@@ -49,6 +50,20 @@ function App() {
         job='Founder'
         sentenceOne='We only launch'
         sentenceTwo='What we love'
+        crossreveal='xPercent'
+      />
+      <ContentSection
+        title='Take Care Two'
+        text='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever'
+      />
+      <CrossRevealSection
+        face={FaceOne}
+        landscape={LandscapeTwo}
+        name='Christian Guard'
+        job='Founder'
+        sentenceOne='We only launch'
+        sentenceTwo='What we love'
+        crossreveal='yPercent'
       />
     </>
   )

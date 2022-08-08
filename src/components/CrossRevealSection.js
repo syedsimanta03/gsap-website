@@ -21,7 +21,7 @@ const StyledCrossRevealContainer = styled.section`
   }
 
   .afterImage img {
-    transform: translate(-50%, 0);
+    transform: translate(0%, 0);
   }
 
   .crossRevealImage img {
@@ -82,6 +82,7 @@ const CrossRevealSection = ({
   job,
   sentenceOne,
   sentenceTwo,
+  crossreveal
 }) => {
   // animate the container one way
   const containerRef = useRef()
@@ -111,16 +112,21 @@ const CrossRevealSection = ({
     crossRevealTween
       .fromTo(
         containerRef.current,
-        { xPercent: 100, x: 0 },
-        { xPercent: 0 }
+        { [crossreveal]: 100, x: 0 }, // xPercent or yPercent = dynamic with props => crossreveal
+        { [crossreveal]: 0 }
         // and animate the image the opposite way at the same time
       )
-      .fromTo(imageRef.current, { xPercent: -100, x: 0 }, { xPercent: 0 }, 0)
+      .fromTo(
+        imageRef.current,
+        { [crossreveal]: -100, x: 0 },
+        { [crossreveal]: 0 },
+        0
+      )
       // fade in the name & job title
       .from(personRef.current, { autoAlpha: 0 }, 0)
       // fade in the quote
       .from(quoteRef.current, { autoAlpha: 0, delay: 0.26 }, 0)
-  },[])
+  }, [crossreveal])
 
   return (
     <StyledCrossRevealContainer ref={triggerRef}>
